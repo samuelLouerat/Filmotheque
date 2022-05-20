@@ -13,8 +13,8 @@ public class MovieManagerImpl implements MovieManager{
 	private MovieDAO movieDAO;
 	
 	@Override
-	public Movie SelectById(int id) {
-		return movieDAO.SelectById(id);
+	public Movie SelectById(int id2) {
+		return movieDAO.SelectById(id2);
 	}
 
 	@Override
