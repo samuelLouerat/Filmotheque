@@ -10,6 +10,7 @@
 			<div>
 				<a th:href="@{'http://localhost:8080/movie/details/'+${movie.id}}">
 					<div>
+						<img alt="le logo du film" th:src="${movie.img}">
 						<p th:text="${movie.title}" />
 					</div>
 				</a>
