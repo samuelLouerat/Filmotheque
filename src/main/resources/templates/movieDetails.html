@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+	<meta charset="UTF-8">
+	<title>List of films</title>
+	</head>
+	<body>
+		<h2>Film details</h2>
+		<ul>	
+			<li th:text="${movie.title}" />
+			<li th:text="${movie.duration} + ' min.'" />
+			<li th:text="${movie.synopsis}" />
+			<li th:text="${movie.releaseYear}" />
+		</ul>
+		<a href="../../">Return</a>
+	</body>
+</html>
