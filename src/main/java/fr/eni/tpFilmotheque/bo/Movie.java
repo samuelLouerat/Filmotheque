@@ -6,6 +6,7 @@ public class Movie {
 	private String title;
 	private int duration;
 	private String synopsis;
+	private String img;
 	private int releaseYear;
 	
 	public Movie() {
@@ -18,6 +19,14 @@ public class Movie {
 		this.synopsis = synopsis;
 		this.releaseYear = releaseYear;
 	}
+	public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
+	}
+
 	public int getId() {
 		return id;
 	}

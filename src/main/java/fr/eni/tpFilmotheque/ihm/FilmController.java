@@ -23,7 +23,7 @@ public class FilmController {
 	@GetMapping({"/movie/list", ""})
 	public String movieCatalog(Model modele) {
 		
-		Movie movie = new Movie("Jurassik Park", 180, "Un film sur des dinosaures dans un parc de Spielberg", 1993);
+		Movie movie = new Movie();
 		movieManager.insert(movie); 
 		
 		modele.addAttribute("movies", movieManager.SelectAllMovie());
