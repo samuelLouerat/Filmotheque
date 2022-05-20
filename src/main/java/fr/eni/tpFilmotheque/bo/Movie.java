@@ -1,5 +1,7 @@
 package fr.eni.tpFilmotheque.bo;
 
+import java.util.List;
+
 public class Movie {
 
 	private int id;
@@ -8,7 +10,28 @@ public class Movie {
 	private String synopsis;
 	private String img;
 	private int releaseYear;
+	private List<Review> reviews;
+	private Genre genre;
+	private List<Person> actor;
+	private Person director;
 	
+	
+	public Genre getGenre() {
+		return genre;
+	}
+
+	public void setGenre(Genre genre) {
+		this.genre = genre;
+	}
+
+	public List<Review> getReviews() {
+		return reviews;
+	}
+
+	public void setReviews(List<Review> reviews) {
+		this.reviews = reviews;
+	}
+
 	public Movie() {
 	}
 	
