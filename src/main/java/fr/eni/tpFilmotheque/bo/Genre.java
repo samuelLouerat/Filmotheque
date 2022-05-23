@@ -1,16 +1,16 @@
 package fr.eni.tpFilmotheque.bo;
 
 public class Genre {
+	public Genre(int id, String name) {
+
+		this.id = id;
+		this.name = name;
+	}
 	private int id;
 	private String name;
 	
 	
 	
-	
-	public Genre() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
 	public int getId() {
 		return id;
 	}

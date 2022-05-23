@@ -26,21 +26,17 @@ public class MovieDAOImpl implements MovieDAO{
 	@Override
 	public void insert(Movie movie) {
 		movie.setId(movies.size());
-		movie.setTitle("Jurassik Park");
-		movie.setSynopsis( "Un film sur des dinosaures dans un parc de Spielberg");
-		movie.setReleaseYear(1993);
-		movie.setDuration(180);
-		movie.setImg("/img/jurassic.png");	
+
 		movies.add(movie);
 		
-		Movie movie2=new Movie();
-		movie2.setId(movies.size());
-		movie2.setTitle("La 7 eme compagnie");
-		movie2.setSynopsis( "Un film de gendarmes pas très très futés");
-		movie2.setReleaseYear(1993);
-		movie2.setDuration(180);
-		movie2.setImg("/7compagnie.jpg");	
-		movies.add(movie2);
+//		Movie movie2=new Movie();
+//		movie2.setId(movies.size());
+//		movie2.setTitle("La 7 eme compagnie");
+//		movie2.setSynopsis( "Un film de gendarmes pas très très futés");
+//		movie2.setReleaseYear(1993);
+//		movie2.setDuration(180);
+//		movie2.setImg("/7compagnie.jpg");	
+//		movies.add(movie2);
 	}
 	
 	
