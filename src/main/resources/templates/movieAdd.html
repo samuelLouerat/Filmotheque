@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Page d'accueil</title>
+<style>
+  form {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    grid-gap: 20px;
+  }
+  label { text-align: center;}
+  .theader { text-align: center; font-weight:bold; font-size: larger;}
+</style>
+</head>
+<body>
+<h1>Ajout d'un film</h1>
+
+
+<form th:action="@{/movieList}" th:object=${movie} method="post">
+  <label for="titleInput">Titre : </label>
+  <input type="text" th:field="*{title}" id="titleInput" /> 
+   <label for="titleInput">Titre : </label>
+  <input type="text" th:field="*{title}" id="titleInput" /> 
+  <label for="durationInput">Durée : </label>
+  <input type="number" th:field="*{duration}" id="durationInput" />
+
+  <label for="genreSelect" >Genre</label>
+  <select class="form-select col-3" id="genreSelect" th:field="*{genre}" required>
+	  	<option th:each="genre: ${@genres}" 
+	  	th:value="${genre.id}" th:text="${genre.name}"></option>
+  </select>	 
+ 
+  <button type="submit">Ajouter Film</button>
+</form>
+
+</body>
+</html>
