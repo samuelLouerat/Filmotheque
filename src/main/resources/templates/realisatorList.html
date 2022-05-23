@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+	<meta charset="UTF-8">
+	<title>List des realisateurs</title>
+	</head>
+	<body>
+		<h2>Realisateurs au catalogue</h2>
+		<div th:each="realisator: ${realisators}">
+			<div>
+				<a th:href="@{'http://localhost:8080/realisator/details/'+${realisator.id}}">
+					<div>
+						<!--  <img alt="le logo du film" th:src="${movie.img}">-->
+						<p th:text="${realisator.lastName}" />
+					</div>
+				</a>
+			</div>
+		</div>
+		<div>
+		<a th:href="@{'/realisator/add'}">Ajouter un realisateur</a>
+		</div>
+	</body>
+</html>
