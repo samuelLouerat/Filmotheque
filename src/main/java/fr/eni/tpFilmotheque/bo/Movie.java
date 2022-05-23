@@ -2,9 +2,12 @@ package fr.eni.tpFilmotheque.bo;
 
 import java.util.List;
 
+import javax.validation.constraints.NotBlank;
+
 public class Movie {
 
 	private int id;
+	@NotBlank
 	private String title;
 	private int duration;
 	private String synopsis;

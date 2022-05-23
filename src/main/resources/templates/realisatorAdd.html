@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Ajouter un realisateur</title>
+<style>
+  form {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    grid-gap: 20px;
+  }
+  label { text-align: center;}
+  .theader { text-align: center; font-weight:bold; font-size: larger;}
+</style>
+</head>
+<body>
+<h1>Ajout d'un réalisateur</h1>
+
+
+<form th:action="@{/realisator/add}" th:object=${realisator} method="post">
+  <div class="alert alert-danger" th:if="${#fields.hasErrors('*')}" >
+	<p th:text="#{index.erreurs}">Message d'erreur</p>
+</div>
+
+  <label for="firstNameInput">Nom : </label>
+  <input type="text" th:field="*{firstName}" id="firstNameInput" /> 
+   <span class="text-danger col-6" th:if="${#fields.hasErrors('*{firstName}')}">
+		<ul>
+			<li th:each="erreur: ${#fields.errors('firstName')}" th:text="${erreur}"></li>
+		</ul>
+	</span> 
+
+  <label for="lastNameInput">Prenom : </label>
+  <input type="text" th:field="*{lastName}" id="lastNameInput" /> 
+   <span class="text-danger col-6" th:if="${#fields.hasErrors('*{lastName}')}">
+		<ul>
+			<li th:each="erreur: ${#fields.errors('lastName')}" th:text="${erreur}"></li>
+		</ul>
+	</span> 
+
+
+  <label for="dateNaissanceInput">Date de naissance : </label>
+  <input type="date" th:field="*{dateDeNaissance}" id="dateNaissanceInput" /> 
+   <span class="text-danger col-6" th:if="${#fields.hasErrors('*{dateDeNaissance}')}">
+		<ul>
+			<li th:each="erreur: ${#fields.errors('dateDeNaissance')}" th:text="${erreur}"></li>
+		</ul>
+	</span> 
+ 
+  <button type="submit">Ajouter realisateur</button>
+</form>
+
+</body>
+</html>

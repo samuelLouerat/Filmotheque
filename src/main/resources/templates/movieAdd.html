@@ -18,12 +18,22 @@
 
 
 <form th:action="@{/movieList}" th:object=${movie} method="post">
+  <div class="alert alert-danger" th:if="${#fields.hasErrors('*')}" >
+	<p th:text="#{index.erreurs}">Message d'erreur</p>
+</div>
+
   <label for="titleInput">Titre : </label>
   <input type="text" th:field="*{title}" id="titleInput" /> 
-   <label for="titleInput">Titre : </label>
-  <input type="text" th:field="*{title}" id="titleInput" /> 
+   <span class="text-danger col-6" th:if="${#fields.hasErrors('*{title}')}">
+		<ul>
+			<li th:each="erreur: ${#fields.errors('title')}" th:text="${erreur}"></li>
+		</ul>
+	</span> 
+
+	
   <label for="durationInput">Durée : </label>
   <input type="number" th:field="*{duration}" id="durationInput" />
+
 
   <label for="genreSelect" >Genre</label>
   <select class="form-select col-3" id="genreSelect" th:field="*{genre}" required>

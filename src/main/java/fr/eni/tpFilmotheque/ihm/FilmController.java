@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -58,8 +61,11 @@ public class FilmController {
 	}
 	
 	@PostMapping("/movieList")
-	public String movieAdd( @ModelAttribute("movie") Movie movie,Model modele
+	public String movieAdd( @Valid @ModelAttribute("movie") Movie movie, BindingResult reultTest,Model modele
 			             ) {
+		if (reultTest.hasErrors()) {
+			return "movieAdd" ;
+		}
 		System.out.println(modele.getAttribute("genreSelect"));
 		movieManager.insert(movie); 
 		modele.addAttribute("movies", movieManager.SelectAllMovie());
