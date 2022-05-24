@@ -2,27 +2,34 @@ package fr.eni.tpFilmotheque.bo;
 
 import java.time.LocalDate;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+@Entity
+@Table(name = "REVIEWS")
 public class Review {
-	
-	private int id;
+	@Id
+	@GeneratedValue
+	private Integer id;
 	private String comment;
 	private int rating;
 	private LocalDate date;
+	@Transient
 	private Person redactor;
 	
-	
-	
-	
+
+	public Review() {
+		super();
+	}
 	public Person getRedactor() {
 		return redactor;
 	}
 	public void setRedactor(Person redactor) {
 		this.redactor = redactor;
 	}
-	public Review() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+
 	public int getId() {
 		return id;
 	}

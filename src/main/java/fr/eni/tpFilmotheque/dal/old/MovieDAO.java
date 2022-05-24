@@ -1,10 +1,10 @@
-package fr.eni.tpFilmotheque.bll;
+package fr.eni.tpFilmotheque.dal.old;
 
 import java.util.List;
 
 import fr.eni.tpFilmotheque.bo.Movie;
 
-public interface MovieManager {
+public interface MovieDAO {
 
 	Movie SelectById(int id);
 	

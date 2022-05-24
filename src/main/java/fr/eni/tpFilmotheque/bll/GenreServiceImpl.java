@@ -8,32 +8,25 @@ import java.util.Map;
 import org.springframework.stereotype.Service;
 
 import fr.eni.tpFilmotheque.bo.Genre;
+import fr.eni.tpFilmotheque.dal.GenreRepository;
+
 @Service
 public class GenreServiceImpl {
 
-	
-	private List<Genre> listeGenres;
+	private GenreRepository genreRepository;
 	private Map<Integer, Genre> mapGenres;
 	
-	public GenreServiceImpl() {
-		listeGenres = new ArrayList<>();
-		listeGenres.add( new Genre(1, "comique"));
-		listeGenres.add( new Genre(2, "fiction"));
-		listeGenres.add(new Genre(3, "drame"));
-		
-		mapGenres = new HashMap<Integer, Genre>();
-		listeGenres.forEach(m -> mapGenres.put(m.getId(), m));
-		
+	public GenreServiceImpl(GenreRepository repository) {
+		this.genreRepository=repository;
 	}
+	
+	public Genre SelectById(Integer id2) {
+		return genreRepository.getById(id2);
+	}
+
 	
 	public List<Genre> getListeGenres(){
-		return listeGenres;		
+		return genreRepository.findAll();	
 	}
-	public Map<Integer, Genre> getMapGenres(){
-		return mapGenres;
-	}
-	
-	
-	
 	
 }

@@ -20,7 +20,8 @@ public class StringToGenreConverter implements Converter<String, Genre>{ //Imple
 	@Override
 	public Genre convert(String id) {
 		Integer theid = Integer.parseInt(id);
-		return service.getMapGenres().get(theid);
+		return service.SelectById(theid);
+
 	}
 
 }

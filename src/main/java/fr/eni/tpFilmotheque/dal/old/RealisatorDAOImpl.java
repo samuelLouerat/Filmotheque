@@ -1,4 +1,4 @@
-package fr.eni.tpFilmotheque.dal;
+package fr.eni.tpFilmotheque.dal.old;
 
 import java.util.ArrayList;
 import java.util.List;

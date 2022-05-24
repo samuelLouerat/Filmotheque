@@ -18,8 +18,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 
-import fr.eni.tpFilmotheque.bll.MovieManager;
-import fr.eni.tpFilmotheque.bll.RealisatorManagerImpl;
+import fr.eni.tpFilmotheque.bll.MovieService;
+import fr.eni.tpFilmotheque.bll.RealisatorServiceImpl;
 import fr.eni.tpFilmotheque.bo.Genre;
 import fr.eni.tpFilmotheque.bo.Movie;
 import fr.eni.tpFilmotheque.bo.Person;
@@ -28,9 +28,9 @@ import fr.eni.tpFilmotheque.bo.Person;
 @SessionAttributes("genres")
 public class RealisateurController {
 	
-	private RealisatorManagerImpl realisatorManager;
+	private RealisatorServiceImpl realisatorManager;
 
-	public RealisateurController(RealisatorManagerImpl realisatorManager) {
+	public RealisateurController(RealisatorServiceImpl realisatorManager) {
 		this.realisatorManager = realisatorManager;
 	}
 	

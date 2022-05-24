@@ -4,7 +4,7 @@ import java.util.List;
 
 import fr.eni.tpFilmotheque.bo.Person;
 
-public interface RealisatorManager {
+public interface RealisatorService {
 
 	Person SelectById(int id);
 	
