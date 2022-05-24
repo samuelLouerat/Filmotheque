@@ -1,10 +1,14 @@
-package fr.eni.tpFilmotheque.dal;
+package fr.eni.tpFilmotheque.dal.old;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Repository;
+
 
 import fr.eni.tpFilmotheque.bo.Movie;
 
@@ -23,10 +27,11 @@ public class MovieDAOImpl implements MovieDAO{
 		return movies;
 	}
 
-	@Override
+
 	public void insert(Movie movie) {
 		movie.setId(movies.size());
-
+		//, MovieRepository repository
+		//repository.save(movie);
 		movies.add(movie);
 		
 //		Movie movie2=new Movie();
@@ -39,6 +44,6 @@ public class MovieDAOImpl implements MovieDAO{
 //		movies.add(movie2);
 	}
 	
-	
+
 	
 }

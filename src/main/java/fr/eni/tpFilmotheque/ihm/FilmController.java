@@ -18,7 +18,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 
-import fr.eni.tpFilmotheque.bll.MovieManager;
+import fr.eni.tpFilmotheque.bll.MovieService;
+import fr.eni.tpFilmotheque.bll.RealisatorService;
 import fr.eni.tpFilmotheque.bo.Genre;
 import fr.eni.tpFilmotheque.bo.Movie;
 
@@ -26,17 +27,18 @@ import fr.eni.tpFilmotheque.bo.Movie;
 @SessionAttributes("genres")
 public class FilmController {
 	
-	private MovieManager movieManager;
-
-	public FilmController(MovieManager movieManager) {
-		this.movieManager = movieManager;
+	private RealisatorService realisatorManager;
+	private MovieService movieManager;
+	public FilmController(RealisatorService manager, MovieService movieMgr) {
+		this.realisatorManager = manager;
+		this.movieManager = movieMgr;
 	}
 	
 	@GetMapping({"/movie/list", ""})
 	public String movieCatalog(Model modele) {
 		
-		Movie movie = new Movie();
-		movieManager.insert(movie); 
+		//Movie movie = new Movie();
+		//movieManager.insert(movie); 
 		
 		modele.addAttribute("movies", movieManager.SelectAllMovie());
 		
@@ -46,27 +48,22 @@ public class FilmController {
 	@GetMapping("/movie/add")
 	public String movieAdd(Model modele) {
 		Movie movie = new Movie();
-		movie.setId(0);
-		movie.setTitle("La 7 eme compagnie");
-		
-		
-//		movie.setSynopsis( "Un film de gendarmes pas très très futés");
-//		movie.setReleaseYear(1993);
-//		movie.setDuration(180);
-//		movie.setImg("/7compagnie.jpg");	
-
+//		movie.setId(0);
+//		movie.setTitle("");
+		modele.addAttribute("actors", realisatorManager.SelectAllRealisator());
 		modele.addAttribute("movie",movie);
 
 		return "movieAdd";
 	}
 	
-	@PostMapping("/movieList")
+	@PostMapping("/movie/add")
 	public String movieAdd( @Valid @ModelAttribute("movie") Movie movie, BindingResult reultTest,Model modele
 			             ) {
 		if (reultTest.hasErrors()) {
 			return "movieAdd" ;
 		}
-		System.out.println(modele.getAttribute("genreSelect"));
+		
+		//System.out.println(modele.getAttribute("genreSelect"));
 		movieManager.insert(movie); 
 		modele.addAttribute("movies", movieManager.SelectAllMovie());
 
@@ -75,7 +72,7 @@ public class FilmController {
 	}
 	
 	@GetMapping("/movie/details/{id}")
-	public String movieDetails(@PathVariable int id, Model modele) {
+	public String movieDetails(@PathVariable Integer id, Model modele) {
 		
 		modele.addAttribute("movie", movieManager.SelectById(id));
 		

@@ -17,7 +17,7 @@
 <h1>Ajout d'un film</h1>
 
 
-<form th:action="@{/movieList}" th:object=${movie} method="post">
+<form th:action="@{/movie/add}" th:object=${movie} method="post">
   <div class="alert alert-danger" th:if="${#fields.hasErrors('*')}" >
 	<p th:text="#{index.erreurs}">Message d'erreur</p>
 </div>
@@ -35,12 +35,17 @@
   <input type="number" th:field="*{duration}" id="durationInput" />
 
 
-  <label for="genreSelect" >Genre</label>
+<label for="genreSelect" >Genre</label>
   <select class="form-select col-3" id="genreSelect" th:field="*{genre}" required>
 	  	<option th:each="genre: ${@genres}" 
 	  	th:value="${genre.id}" th:text="${genre.name}"></option>
   </select>	 
- 
+
+<div  th:each="actor: ${actors}">
+   <label th:for="${actor.id}" th:text="${actor.lastName}"></label>
+  <input type="checkbox"  th:value="${actor.id}"  th:id="${actor.id}"  th:name="${actor.id}" >
+</div>
+  
   <button type="submit">Ajouter Film</button>
 </form>
 
