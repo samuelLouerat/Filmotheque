@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
 	<meta charset="UTF-8">
-	<title>List of films</title>
+	<title>Détail du Film</title>
 	</head>
 	<body>
 		<h2>Film details</h2>
@@ -11,7 +11,13 @@
 			<li th:text="${movie.duration} + ' min.'" />
 			<li th:text="${movie.synopsis}" />
 			<li th:text="${movie.releaseYear}" />
+			<li th:text="${movie.genre.name}" />
+				<ul th:each="actor: ${movie.actors}">
+					<li th:text="${actor.firstName}" />
+				</ul>
+			<p th:each="avis.comment:${movie.reviews}">	
 		</ul>
+		<a th:href="@{/review/add(movieId=${movie.id})}"><button type="button">Ajouter un Avis</button></a>
 		<a href="../../">Return</a>
 	</body>
 </html>

@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotBlank;
@@ -31,19 +32,19 @@ public class Movie {
 	private String img;
 	@Transient
 	private int releaseYear;
-	@Transient
+	
+	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER, orphanRemoval=false)
+	@JoinColumn(name="review_id")
 	private List<Review> reviews;
-	//@Transient
 	@ManyToOne
 	private Genre genre;
-	//@Transient
 	@ManyToMany(
 	 fetch = FetchType.LAZY) //pas delete 
 	@JoinTable(name="MovieActor", 
 	           joinColumns= {@JoinColumn(name="movie_id")},
 	           inverseJoinColumns= {@JoinColumn(name="actor_id")}
 	)
-	private List<Person> actor;
+	private List<Person> actors;
 	@Transient
 	private Person director;
 	
@@ -70,15 +71,17 @@ public class Movie {
 		this.title = title;
 		this.synopsis = synopsis;
 		this.releaseYear = releaseYear;
-		this.actor = actor;
+		this.actors = actor;
 	}
 	
-	public void setActor(Person actor) {
-		this.actor.add(actor);
+
+
+	public List<Person> getActors() {
+		return actors;
 	}
 
-	public List<Person> getActor() {
-		return actor;
+	public void setActors(List<Person> actors) {
+		this.actors = actors;
 	}
 
 	public Genre getGenre() {

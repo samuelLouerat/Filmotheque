@@ -4,50 +4,33 @@
 <meta charset="UTF-8">
 <title>Page d'accueil</title>
 <style>
-  form {
-    display: grid;
-    grid-template-columns: 1fr 5fr;
-    grid-gap: 20px;
-  }
-  label { text-align: center;}
-  .theader { text-align: center; font-weight:bold; font-size: larger;}
 </style>
 </head>
 <body>
-<h1>Ajout d'un film</h1>
-
-
-<form th:action="@{/movie/add}" th:object=${movie} method="post">
-  <div class="alert alert-danger" th:if="${#fields.hasErrors('*')}" >
-	<p th:text="#{index.erreurs}">Message d'erreur</p>
-</div>
-
-  <label for="titleInput">Titre : </label>
-  <input type="text" th:field="*{title}" id="titleInput" /> 
-   <span class="text-danger col-6" th:if="${#fields.hasErrors('*{title}')}">
-		<ul>
-			<li th:each="erreur: ${#fields.errors('title')}" th:text="${erreur}"></li>
-		</ul>
-	</span> 
-
-	
-  <label for="durationInput">Durée : </label>
-  <input type="number" th:field="*{duration}" id="durationInput" />
-
-
-<label for="genreSelect" >Genre</label>
-  <select class="form-select col-3" id="genreSelect" th:field="*{genre}" required>
-	  	<option th:each="genre: ${@genres}" 
-	  	th:value="${genre.id}" th:text="${genre.name}"></option>
-  </select>	 
-
-<div  th:each="actor: ${actors}">
-   <label th:for="${actor.id}" th:text="${actor.lastName}"></label>
-  <input type="checkbox"  th:value="${actor.id}"  th:id="${actor.id}"  th:name="${actor.id}" >
-</div>
-  
-  <button type="submit">Ajouter Film</button>
-</form>
-
+	<h1>Ajout d'un film</h1>
+	<form th:action="@{/movie/add}" th:object=${movie} method="post">
+		<div class="alert alert-danger" th:if="${#fields.hasErrors('*')}" >
+			<p th:text="#{index.erreurs}">Message d'erreur</p>
+		</div>
+		<label for="titleInput">Titre : </label>
+	  	<input type="text" th:field="*{title}" id="titleInput" /> 
+		   <span class="text-danger col-6" th:if="${#fields.hasErrors('*{title}')}">
+				<ul><li th:each="erreur: ${#fields.errors('title')}" th:text="${erreur}"></li></ul>
+			</span> 	
+	  <label for="durationInput">Durée : </label>
+	  <input type="number" th:field="*{duration}" id="durationInput" />
+	  <label for="genreSelect" >Genre</label>
+	  <select class="form-select col-3" id="genreSelect" th:field="*{genre}" required>
+		  	<option th:each="genre: ${@genres}" th:value="${genre.id}" th:text="${genre.name}"></option>
+	  </select>	 
+	  <div>
+		  <div  th:each="actor: ${actors}">
+		   	<label th:for="${actor.id}" th:text="${actor.lastName}"></label>
+		 	<input type="checkbox"  th:value="${actor.id}"  th:id="${actor.id}"  th:field="*{actors}" >
+		 </div>
+	 </div>
+	 	<a th:href="@{/realisator/add}"><button type="button">Ajouter un Acteur</button></a>
+	  <button type="submit">Ajouter Film</button>
+	</form>
 </body>
 </html>

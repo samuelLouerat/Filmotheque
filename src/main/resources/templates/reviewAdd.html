@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Page d'accueil</title>
+<style>
+</style>
+</head>
+<body>
+	<h1>Ajout d'un avis</h1>
+	<form th:action="@{/review/add}" th:object=${review} method="post">
+
+		<label for="titleInput">Avis : </label>
+	  	<input type="text" th:field="*{comment}" id="titleInput" /> 
+	
+      <label for="ratinginput">Note : </label>
+	  <input type="number" th:field="*{rating}" id="ratinginput" />
+	  <input type="hidden" th:value="${movieId}" id="movieId" name="movieId"/>
+	  <!--  <label for="redactorinput">Note : </label>
+	  <input type="text" th:field="*{redactor}" id="redactorinput" />
+	  <label for="dateInput">Date : </label>
+	  <input type="date" th:field="*{date}" id="dateInput" />-->
+	  <button type="submit">Ajouter Avis</button>
+	</form>
+</body>
+</html>

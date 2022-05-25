@@ -2,16 +2,14 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Ajouter un realisateur</title>
-<style>
+<title>Ajouter un z=acteur</title>
 
-</style>
 </head>
 <body>
-<h1>Ajout d'un réalisateur</h1>
+<h1>Ajout d'un acteur</h1>
 
 
-<form th:action="@{/realisator/add}" th:object=${realisator} method="post">
+<form th:action="@{/actor/add}" th:object=${actor} method="post">
   <div class="alert alert-danger" th:if="${#fields.hasErrors('*')}" >
 	<p th:text="#{index.erreurs}">Message d'erreur</p>
 </div>
@@ -41,7 +39,7 @@
 		</ul>
 	</span> 
  
-  <button type="submit">Ajouter realisateur</button>
+  <button type="submit">Ajouter acteur</button>
 </form>
 
 </body>
