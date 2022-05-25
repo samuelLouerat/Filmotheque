@@ -33,13 +33,13 @@ public class Movie {
 	@Transient
 	private int releaseYear;
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER, orphanRemoval=false)
+	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.LAZY, orphanRemoval=false)
 	@JoinColumn(name="review_id")
 	private List<Review> reviews;
 	@ManyToOne
 	private Genre genre;
 	@ManyToMany(
-	 fetch = FetchType.LAZY) //pas delete 
+	 fetch = FetchType.EAGER) //pas delete 
 	@JoinTable(name="MovieActor", 
 	           joinColumns= {@JoinColumn(name="movie_id")},
 	           inverseJoinColumns= {@JoinColumn(name="actor_id")}
