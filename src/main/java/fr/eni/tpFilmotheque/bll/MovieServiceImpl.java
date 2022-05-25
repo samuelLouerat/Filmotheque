@@ -34,7 +34,6 @@ public class MovieServiceImpl implements MovieService {
 
 	public void insert(Movie movie) {
 
-		System.out.println(movie.toString());
 		repository.save(movie);
 		//movieDAO.insert(movie);
 		

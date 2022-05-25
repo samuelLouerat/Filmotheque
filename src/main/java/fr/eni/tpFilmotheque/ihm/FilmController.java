@@ -48,11 +48,8 @@ public class FilmController {
 	@GetMapping("/movie/add")
 	public String movieAdd(Model modele) {
 		Movie movie = new Movie();
-//		movie.setId(0);
-//		movie.setTitle("");
 		modele.addAttribute("actors", realisatorManager.SelectAllRealisator());
 		modele.addAttribute("movie",movie);
-
 		return "movieAdd";
 	}
 	

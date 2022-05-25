@@ -6,41 +6,42 @@ import org.springframework.stereotype.Service;
 
 import fr.eni.tpFilmotheque.bo.Movie;
 import fr.eni.tpFilmotheque.bo.Person;
+import fr.eni.tpFilmotheque.bo.Review;
 import fr.eni.tpFilmotheque.dal.RealisatorRepository;
+import fr.eni.tpFilmotheque.dal.ReviewsRepository;
 import fr.eni.tpFilmotheque.dal.old.MovieDAO;
 import fr.eni.tpFilmotheque.dal.old.RealisatorDAO;
 
 @Service
-public class RealisatorServiceImpl implements RealisatorService{
+public class ReviewsServiceImpl implements ReviewService{
 
-	private RealisatorRepository repository;
+	private ReviewsRepository repository;
+	
+	public ReviewsServiceImpl
+	(
+		ReviewsRepository repository
+	)  {
+			this.repository = repository;
+		}
+	
 	@Override
-	public Person SelectById(int id2) {
+	public Review SelectById(int id2) {
 		//return realisatorDAO.SelectById(id2);
 		return repository.findById(id2).get();
 	}
 
 	@Override
-	public List<Person> SelectAllRealisator() { 
+	public List<Review> SelectAllReviews() { 
 		return repository.findAll();
 	}
 
 	@Override
-	public void insert(Person realisator) {
-
-		//realisatorDAO.insert(realisator);
-		repository.save(realisator);
+	public void insert(Review review) {
+		repository.save(review);
 		
 	}
 
-	public RealisatorServiceImpl
-	(
-		RealisatorRepository repository
-		//RealisatorDAO realisatorDAO
-	)  {
-			//this.realisatorDAO = realisatorDAO;
-			this.repository = repository;
-		}
+
 
 	
 	
